@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+live link:- glowing-kashata-ddb2c9.netlify.app
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
