@@ -1,0 +1,43 @@
+.msgContainer{
+    width: 100%;
+    height:100vh;
+    background:rgb(2, 2, 41);
+    display:flex;
+    flex-direction: column;
+    position:relative;
+    font-style:italic;
+    font-size:20px;
+}
+.roomInfo{
+    background: rgb(255, 115, 0);
+    width:100%;
+    z-index:2;
+    border-radius: 5px;
+}
+.msgInput{
+    position:absolute;
+    width:100%;
+    left:2px;
+    bottom:2px;
+}
+
+.msgInput input{
+    width:99%;
+    height:5vh;
+    font-size:21px;
+    outline:none;
+}
+
+.msgBox{
+    position:absolute;
+    width:90%;
+    display:flex;
+    flex-direction: column;
+    left:5%;
+    bottom:52px;
+    height:86vh;
+    background:lightcoral;
+    overflow:hidden;
+    overflow-y: auto;
+    scroll-behavior:smooth;
+}

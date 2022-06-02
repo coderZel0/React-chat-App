@@ -1,0 +1,102 @@
+.rooms{
+    width:98%;
+    color:wheat;
+    background:linear-gradient(0deg,"red","purple");
+}
+.heading{
+    display:flex;
+    justify-content:space-between;
+    margin:0px 8px;
+}
+.options{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top:20px;
+    padding-top: 10px;
+    margin-right:20px;
+    position:relative;
+}
+.iconArrowdown{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu{
+    margin-top:10px;
+    padding-top:5px;
+    position:absolute;
+    bottom:-110px;
+    display:none;
+    z-index:1;
+}
+.option{
+    display:flex;
+    margin-top:10px;
+    align-items:center;
+}
+.visible{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Room Form*/
+.formContainer{
+    background: cyan;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position:relative;
+    z-index:1;
+}
+.form{
+    display:none;
+    position: absolute;
+    background: rgb(53, 29, 161);
+    right:-300px;
+    border-radius:10px;
+    margin-left:25px;
+}
+.form form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0px 10px;
+    padding: 3px 0px;
+    margin-left:6px;
+}
+.form form div{
+    margin-top:5px;
+    padding:5px;
+}
+.form form input{
+    border:none;
+    outline:none;
+    height: 25px;
+    background: rgb(175, 197, 238);
+    border-radius:3px;
+    font-size:18px;
+}
+.joinform{
+    right:-275px;
+}
+.formVisible{
+    display:flex;
+}
+.roomLabel{
+    display:flex;
+    align-items: center;
+    min-width:fit-content;
+    margin:5px 6px;
+    padding:2px;
+}
+
+.createButton{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}

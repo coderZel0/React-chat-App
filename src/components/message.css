@@ -1,0 +1,20 @@
+
+.messageInner{
+    max-width:230px;
+    min-width:fit-content;
+    border-radius:10px;
+    min-height:fit-content;
+    align-content: center;
+    text-align: center;
+    margin:20px 20px;
+    padding:10px 10px 10px 10px;
+    word-wrap:break-word;
+}
+
+.right{
+    float:right;
+}
+
+.message{
+    width:100%;
+}
