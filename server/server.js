@@ -85,6 +85,7 @@ io.on("connection",(socket)=>{
                 currId = id;
                 socket.join(id);
                 socket.emit('roomJoined',roomdata[0]);
+                console.log("joined room data roomdata[0]",roomdata[0])
                 io.sockets.in(id).emit(`${id}RoomMsg`,{message:`${socket.id} joined room ${id}`});
                 console.log(`joined room ${id}`);
             }

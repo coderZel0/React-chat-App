@@ -67,7 +67,7 @@ const MessageBox = () => {
                 }
             </div>
             <div className="msgInput">
-                <input value ={message.message} onKeyPress={(e)=>{if(e.key==='Enter'){onEnter()}}} onChange={(e)=>{handleChange(e)}}></input>
+                <input placeholder="write a message" value ={message.message} onKeyPress={(e)=>{if(e.key==='Enter'){onEnter()}}} onChange={(e)=>{handleChange(e)}}></input>
             </div>
         </div>
     )

@@ -1,4 +1,4 @@
-import {React,useState,useContext} from 'react'
+import {React,useState,useContext, useEffect} from 'react'
 import './rooms.css'
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import { Button } from '@material-ui/core';
@@ -42,6 +42,13 @@ const OpenRooms = () => {
     const handleSubmit =(e)=>{
         e.preventDefault();
     }
+
+    useEffect(()=>{
+        socket.on('roomJoined',(room)=>{
+            setCurrentRoom(room);
+        })
+    },[])
+
     return (
         <div className="rooms">
             <div className="heading">

@@ -11,12 +11,13 @@ function App() {
   const [serverMessage,setServerMess] = useState('');
   const [currentRoom,setCurrentRoom] = useState();
   const [show,setShow] = useState(false);
-  const SERVER = 'https://mysterious-plateau-78455.herokuapp.com/';
+  const SERVER = 'https://mysterious-plateau-78455.herokuapp.com';
+  const DEV_SERVER= "http://localhost:5000";
   
 
   let skt;
   useEffect(()=>{
-      skt = io(SERVER);
+      skt = io(DEV_SERVER);
       setSocket(skt);
       setCurrentRoom();
       skt.on("server",(msg)=>setServerMess(msg.message));
@@ -29,8 +30,8 @@ function App() {
   
   useEffect(()=>{
     setShow(true);
-    setTimeout(()=>setShow(false),4000);
-
+    const time =setTimeout(()=>setShow(false),4000);
+    return ()=>{clearTimeout(time)};
   },[serverMessage])
   return (
     <div className="App">

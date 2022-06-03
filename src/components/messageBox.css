@@ -26,6 +26,9 @@
     height:5vh;
     font-size:21px;
     outline:none;
+    border:none;
+    border-radius: 10px 10px 0px 0px;
+    background-color: rgb(221, 217, 211);
 }
 
 .msgBox{
