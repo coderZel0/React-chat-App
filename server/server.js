@@ -20,7 +20,7 @@ const httpServer = createServer(app);
 
 const io = socket(httpServer,{
     cors:{
-        origin:"http://localhost:3000",
+        origin:["http://localhost:3000","https://glowing-kashata-ddb2c9.netlify.app"],
         methods:["GET","POST"]
     }
 });
@@ -49,7 +49,7 @@ io.on("connection",(socket)=>{
         socket.broadcast.emit('globalMessage',msg);
         console.log(msg)
     })
-//Room messages
+//Room server messages
     socket.on('roomMessage',msgInfo=>{
         io.sockets.in(msgInfo.roomId).emit('roomsg',{message:msgInfo.message})
     })    
@@ -77,7 +77,6 @@ io.on("connection",(socket)=>{
     var currId;
     socket.on("joinRoom",id=>{
         if(!id) return;
-       
         Room.find({"roomId":id}).
         then((roomdata)=>{
             if(roomdata){
@@ -85,7 +84,6 @@ io.on("connection",(socket)=>{
                 currId = id;
                 socket.join(id);
                 socket.emit('roomJoined',roomdata[0]);
-                console.log("joined room data roomdata[0]",roomdata[0])
                 io.sockets.in(id).emit(`${id}RoomMsg`,{message:`${socket.id} joined room ${id}`});
                 console.log(`joined room ${id}`);
             }
@@ -95,8 +93,16 @@ io.on("connection",(socket)=>{
         }).catch(err=>console.log(err))
         
     })
-//Room message
-    socket.on(`${currId}UserMsg`,(msg)=>{
+
+    //Leave room
+    socket.on('leaveRoom',(room)=>{
+        socket.leave(room);
+        console.log('leaved room',room);
+    })
+
+//Messages are handled here
+    socket.on('message',(msg)=>{
+        io.sockets.in(`${msg.to}`).emit(`${msg.to}`,msg);
         console.log(msg);
     })
 

@@ -33,6 +33,9 @@ const OpenRooms = () => {
         socket.emit("createRoom",{Name:roomname,Owner:socket.id,type:"open",max:100,current:0});
     }
     const joinRoom = (id)=>{
+        if(currRoom){
+            socket.emit('leaveRoom',currRoom.roomId);
+        }
         socket.emit('joinRoom',id);
         socket.on('roomJoined',(room)=>{
             setCurrentRoom(room);
@@ -53,6 +56,8 @@ const OpenRooms = () => {
         <div className="rooms">
             <div className="heading">
                 <h2>Open Rooms</h2>
+
+                
                 <div className="options">
                     <div className='iconArrowdown' onClick={()=>onArrowClick()}><KeyboardArrowDownIcon size="medium"/></div>
                     <div className={`menu ${hovering?"visible":null}`}>
@@ -91,11 +96,20 @@ const OpenRooms = () => {
                             
                     </div>                      
                 </div>
+
             </div>
-            <h4>Room1</h4>
-            <h4>Room1</h4>
-            <h4>Room1</h4>
-            <h4>Room1</h4>
+            <div>
+                <h4>Room1</h4>
+                <h4>Room1</h4>
+                <h4>Room1</h4>
+                <h4>Room1</h4>
+            </div>
+            
+            <div>
+                <div>
+                    <h2>Your Rooms</h2>
+                </div>
+            </div>
         </div>
     )
 }

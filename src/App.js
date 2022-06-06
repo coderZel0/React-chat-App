@@ -8,7 +8,7 @@ export const context = createContext();
 
 function App() {
   const [socket,setSocket] = useState()
-  const [serverMessage,setServerMess] = useState('');
+  const [serverMessage,setServerMess] = useState({message:'',color:''});
   const [currentRoom,setCurrentRoom] = useState();
   const [show,setShow] = useState(false);
   const SERVER = 'https://mysterious-plateau-78455.herokuapp.com';
@@ -20,7 +20,7 @@ function App() {
       skt = io(DEV_SERVER);
       setSocket(skt);
       setCurrentRoom();
-      skt.on("server",(msg)=>setServerMess(msg.message));
+      skt.on("server",(msg)=>setServerMess({message:msg.message,color:''}));
 
   },[]);
   useEffect(()=>{
@@ -35,11 +35,13 @@ function App() {
   },[serverMessage])
   return (
     <div className="App">
-      <div className={`serverMessages ${show?"":"hide"}`}>{serverMessage && <h3>{serverMessage}</h3>}</div>
+      <div className={`serverMessages ${show?"":"hide"}`} style={{background:`${serverMessage.color}`}}>
+        {serverMessage && <h3>{serverMessage.message}</h3>} 
+      </div>
       {socket && <context.Provider value={{socket:socket,currentRoom:currentRoom,setCurrentRoom:setCurrentRoom}}>
           <SidePanel />
         </context.Provider>}
-      {socket && <context.Provider value={{socket,room:currentRoom}}>
+      {socket && <context.Provider value={{socket,room:currentRoom,setServerMess}}>
           <MessageBox />
         </context.Provider>}
     </div>
