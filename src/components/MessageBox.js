@@ -32,6 +32,7 @@ const MessageBox = () => {
         socket.emit('message',message);
         setMessage({...message,message:''}) 
     }
+    
     useEffect(()=>{
         socket.on('globalMessage',(msg)=>{
             setMessages([...messages,msg]);

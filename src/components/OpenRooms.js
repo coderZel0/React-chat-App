@@ -30,7 +30,7 @@ const OpenRooms = () => {
         
     }
     const createRoom = ()=>{
-        socket.emit("createRoom",{Name:roomname,Owner:socket.id,type:"open",max:100,current:0});
+        socket.emit("createRoom",{Name:roomname,Owner:socket.id,type:"public",max:100,current:0});
     }
     const joinRoom = (id)=>{
         if(currRoom){

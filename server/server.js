@@ -102,7 +102,7 @@ io.on("connection",(socket)=>{
 
 //Messages are handled here
     socket.on('message',(msg)=>{
-        io.sockets.in(`${msg.to}`).emit(`${msg.to}`,msg);
+        socket.to(`${msg.to}`).emit(`${msg.to}`,msg);
         console.log(msg);
     })
 
