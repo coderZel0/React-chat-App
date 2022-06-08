@@ -118,6 +118,13 @@ app.get('/',(req,res)=>{
     res.send("Hello there i am in port 5000");
 })
 
+//end point for public rooms
+
+app.get('/rooms/public',(req,res)=>{
+    Room.find({type:"public"})
+    .then((res)=>console.log(res))
+    .catch(err=>console.log(er));
+})
 
 
 httpServer.listen(process.env.PORT || 5000,()=>{

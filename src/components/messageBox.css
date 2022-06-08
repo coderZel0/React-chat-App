@@ -7,6 +7,8 @@
     position:relative;
     font-style:italic;
     font-size:20px;
+    transform: translateY(-100%);
+    transition: 3s ease-in;
 }
 .roomInfo{
     background: rgb(255, 115, 0);
@@ -45,4 +47,8 @@
     overflow:hidden;
     overflow-y: auto;
     scroll-behavior:smooth;
+}
+
+.showContainer{
+    transform: translateY(0%);
 }

@@ -4,6 +4,7 @@
     background:purple;
     font-style: inherit;
     font-size:20px;
+    max-width: 400px;
 }
 
 .panelInner{

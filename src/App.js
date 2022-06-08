@@ -3,6 +3,7 @@ import {useEffect,useState,createContext} from 'react';
 import './App.css';
 import {io} from "socket.io-client";
 import SidePanel from './components/SidePanel';
+import JoinRoom from './components/JoinRoom';
 
 export const context = createContext();
 
@@ -17,7 +18,7 @@ function App() {
 
   let skt;
   useEffect(()=>{
-      skt = io(DEV_SERVER);
+      skt = io(SERVER);
       setSocket(skt);
       setCurrentRoom();
       skt.on("server",(msg)=>setServerMess({message:msg.message,color:''}));
@@ -41,9 +42,9 @@ function App() {
       {socket && <context.Provider value={{socket:socket,currentRoom:currentRoom,setCurrentRoom:setCurrentRoom}}>
           <SidePanel />
         </context.Provider>}
-      {socket && <context.Provider value={{socket,room:currentRoom,setServerMess}}>
-          <MessageBox />
-        </context.Provider>}
+      <context.Provider value={{socket,room:currentRoom,setServerMess}}>
+          {(socket && currentRoom)?<MessageBox />:<JoinRoom/>}
+        </context.Provider>
     </div>
   );
 }

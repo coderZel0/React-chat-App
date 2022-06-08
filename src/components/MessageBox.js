@@ -68,7 +68,7 @@ const MessageBox = () => {
     },[messages])
 
     return (
-        <div className="msgContainer">
+        <div className={`msgContainer ${(room)?'showContainer':''}`}>
             
             <div className="roomInfo">
                 {room && <h2>{room.roomName}#{room.roomId}</h2>}
